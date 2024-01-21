@@ -251,8 +251,8 @@ Navigation
 Hero
 ========================================================================== */
 .hero {
-  min-height: 750px;
-  background: url('../img-mine/hero-min.jpg') center center;
+  min-height: 1000px;
+  background: url('../img-mine/hero-min.jpg') center 45%;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -278,7 +278,7 @@ Hero
     margin-bottom: 80px;
   }
   .hero-content {
-    padding-top: 55%;
+    padding-top: 85%;
   }
   .hero-content img {
     width: 55%;
