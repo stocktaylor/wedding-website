@@ -42,7 +42,7 @@ function templateHTML() {
         gulp.src('index_template.html')
 		.pipe(template(JSON.parse(data)))
         .pipe(rename('index.html'))
-		.pipe(gulp.dest('./output'))
+		.pipe(gulp.dest('./'))
     });
 
 }
