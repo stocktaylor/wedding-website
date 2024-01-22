@@ -10,19 +10,18 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <title>Taylor & Megan are getting married!!</title>
+    <title>Taylor & Megan are getting married!</title>
     <meta name="description" content="We would like to invite you to our big day.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#ffffff">
-    <meta property="og:title" content="Taylor & Megan are getting married!!">
+    <meta property="og:title" content="Taylor & Megan are getting married!">
     <meta property="og:description" content="We would like to invite you to our big day.">
-    <meta property="og:image" content="">
+    <meta property="og:image" content="http://celebratewiththestocks.com/img-mine/hero-min.jpg">
     <meta property="og:type" content="website">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="manifest" href="manifest.json">
-    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
 
     <script>
         // load css files from CDN if local node_modules fail
@@ -57,7 +56,7 @@
 
     <link rel="stylesheet" href="css/normalize.min.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/jquery.fancybox.css">
+    <link rel="stylesheet" href="css/fancybox.css" />
     <link rel="stylesheet" href="css/flexslider.css">
     <link rel="stylesheet" href="css/styles.min.css">
     <link rel="stylesheet" href="css/queries.css">
@@ -70,14 +69,15 @@
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade
     your browser</a> to improve your experience.</p>
 <![endif]-->
-<section class="hero">
+<section id="home" class="hero">
     <section class="navigation">
         <header>
             <div class="header-content">
-                <div class="logo"><a href="#"><img src="img-mine/title.png" alt="Logo"></a></div>
+                <div class="logo"><a href="#"><img src="img/title.png" alt="Logo"></a></div>
                 <div class="header-nav">
                     <nav>
                         <ul class="primary-nav">
+                            <li><a href="#home">Home</a></li>
                             <li><a href="#intro">The Elopement</a></li>
                             <li><a href="#events">The Reception</a></li>
                             <li><a href="#qa">Q&A</a></li>
@@ -224,65 +224,33 @@
         </div>
         <div class="row">
             <div class="col-md-2">
-                <!-- Larger image -->
-                <a class="fancybox" rel="group" href="img-mine/1.jpg">
-                    <div class="img-wrap">
-                        <div class="overlay">
-                            <i class="fa fa-search"></i>
-                        </div>
-                        <!-- Smaller image -->
-                        <img src="img-mine/1.jpg" alt=""/>
-                    </div>
+                <a href="img/1.jpg" data-fancybox="gallery" data-caption="Caption #1">
+                    <img src="img/1.jpg" />
                 </a>
             </div>
             <div class="col-md-2">
-                <a class="fancybox" rel="group" href="img-mine/2.jpg">
-                    <div class="img-wrap">
-                        <div class="overlay">
-                            <i class="fa fa-search"></i>
-                        </div>
-                        <img src="img-mine/2.jpg" alt=""/>
-                    </div>
+                <a href="img/2.jpg" data-fancybox="gallery" data-caption="Caption #1">
+                    <img src="img/2.jpg" />
                 </a>
             </div>
             <div class="col-md-2">
-                <a class="fancybox" rel="group" href="img-mine/3.jpg">
-                    <div class="img-wrap">
-                        <div class="overlay">
-                            <i class="fa fa-search"></i>
-                        </div>
-                        <img src="img-mine/3.jpg" alt=""/>
-                    </div>
+                <a href="img/3.jpg" data-fancybox="gallery" data-caption="Caption #1">
+                    <img src="img/3.jpg" />
                 </a>
             </div>
             <div class="col-md-2">
-                <a class="fancybox" rel="group" href="img-mine/4.jpg">
-                    <div class="img-wrap">
-                        <div class="overlay">
-                            <i class="fa fa-search"></i>
-                        </div>
-                        <img src="img-mine/4.jpg" alt=""/>
-                    </div>
+                <a href="img/4.jpg" data-fancybox="gallery" data-caption="Caption #1">
+                    <img src="img/4.jpg" />
                 </a>
             </div>
             <div class="col-md-2">
-                <a class="fancybox" rel="group" href="img-mine/5.jpg">
-                    <div class="img-wrap">
-                        <div class="overlay">
-                            <i class="fa fa-search"></i>
-                        </div>
-                        <img src="img-mine/5.jpg" alt=""/>
-                    </div>
+                <a href="img/5.jpg" data-fancybox="gallery" data-caption="Caption #1">
+                    <img src="img/5.jpg" />
                 </a>
             </div>
             <div class="col-md-2">
-                <a class="fancybox" rel="group" href="img-mine/6.jpg">
-                    <div class="img-wrap">
-                        <div class="overlay">
-                            <i class="fa fa-search"></i>
-                        </div>
-                        <img src="img-mine/6.jpg" alt=""/>
-                    </div>
+                <a href="img/6.jpg" data-fancybox="gallery" data-caption="Caption #1">
+                    <img src="img/6.jpg" />
                 </a>
             </div>
         </div>
@@ -424,14 +392,13 @@
         <div class="row">
             <div class="col-sm-12 text-center content">
                 <span class="to-top-wrapper"><a href="#top" class="to-top"><i class="fa fa-angle-up"></i></a></span>
-                <!-- <p>Crafted by Ram with lots of <span class="fa fa-heart pulse2"></span> for Antara</p> -->
             </div>
         </div>
     </div>
 </footer>
 <script src="js/vendor/jquery-1.11.2.min.js" onerror="loadJsFromCDN('jquery.js')"></script>
 <script src="node_modules/waypoints/lib/jquery.waypoints.min.js" onerror="loadJsFromCDN('waypoints.js')"></script>
-<script src="js/jquery.fancybox.pack.js"></script>
+<script src="js/fancybox.umd.js"></script>
 <script src="js/vendor/bootstrap.min.js"></script>
 <script src="js/jquery.flexslider-min.js"></script>
 <script src="js/jquery.mb.YTPlayer.min.js"></script>
