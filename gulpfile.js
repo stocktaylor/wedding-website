@@ -1,30 +1,51 @@
-'use strict';
+import gulp from 'gulp';
+import template from 'gulp-template';
+import data from 'gulp-data';
 
-var gulp = require('gulp');
-var sass = require('gulp-sass')(require('sass'));
-var uglify = require('gulp-uglify');
-var rename = require('gulp-rename');
+export default () => (
+	gulp.src('index.html')
+		.pipe(data(() => ({name: 'Sindre'})))
+		.pipe(template(null, {
+			interpolate: /{{(.+?)}}/gs
+		}))
+		.pipe(gulp.dest('output/'))
+);
 
-// compile scss to css
-gulp.task('sass', function () {
-    return gulp.src('./sass/styles.scss')
-        .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
-        .pipe(rename({basename: 'styles.min'}))
-        .pipe(gulp.dest('./css'));
-});
+// // import gulp from "gulp";
 
-// watch changes in scss files and run sass task
-gulp.task('sass:watch', function () {
-    gulp.watch('./sass/**/*.scss', ['sass']);
-});
+// const {src, dest} = require('gulp');
+// const uglify = require('gulp-uglify');
+// const rename = require('gulp-rename');
+// var sass = require('gulp-sass')(require('sass'));
+// const data = require('gulp-data');
 
-// minify js
-gulp.task('minify-js', function () {
-    return gulp.src('./js/scripts.js')
-        .pipe(uglify())
-        .pipe(rename({basename: 'scripts.min'}))
-        .pipe(gulp.dest('./js'));
-});
+// function minJS() {
+//     return src('js/*.js')
+//         .pipe(uglify())
+//         .pipe(dest(`output/`));
+// }
 
-// default task
-gulp.task('default', gulp.series('sass', 'minify-js'));
+// function compSASS() {
+//     return src(`./sass/styles.scss`)
+//         .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+//         .pipe(rename({basename: 'styles.min'}))
+//         .pipe(dest(`output/`));
+// }
+
+// function tempHTML() {
+//     return src('index.html')
+// }
+ 
+// function print() {
+//     console.log(`done`);
+// }
+
+// function defaultTask(cb) {
+//     minJS();
+//     compSASS();
+//     print();
+
+//     cb();
+//   }
+  
+//   exports.default = defaultTask
