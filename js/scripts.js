@@ -1,3 +1,16 @@
+document.addEventListener("DOMContentLoaded", (event => {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+    
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+}))
+
+
 $(document).ready(function () {
 
     /***************** Waypoints ******************/
@@ -118,17 +131,6 @@ $(document).ready(function () {
     });
     /***************** Smooth Scrolling ******************/
 
-    $(function () {
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-        
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    });
 
     /********************** Social Share buttons ***********************/
     var share_bar = document.getElementsByClassName('share-bar');

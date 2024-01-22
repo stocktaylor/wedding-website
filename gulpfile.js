@@ -1,12 +1,13 @@
 
 import gulp from 'gulp';
-import uglify from 'gulp-uglify';
+import uglifyES from 'gulp-uglify-es';
 import rename from 'gulp-rename';
 import template from 'gulp-template';
 import dartSass from 'sass';
 import gulpSass from 'gulp-sass';
 import fs from 'graceful-fs';
 const sass = gulpSass(dartSass);
+const uglify = uglifyES.default;
 // const data = require('gulp-data');
 
 function minifyJS() {
