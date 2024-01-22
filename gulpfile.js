@@ -1,14 +1,3 @@
-// import gulp from 'gulp';
-
-// import data from 'gulp-data';
-
-// export default () => (
-
-    
-        
-// );
-
-// // import gulp from "gulp";
 
 import gulp from 'gulp';
 import uglify from 'gulp-uglify';
@@ -40,7 +29,7 @@ function templateHTML() {
             console.log(err);
         }
         gulp.src('index_template.html')
-		.pipe(template(JSON.parse(data)))
+		.pipe(template(JSON.parse(data).template.index))
         .pipe(rename('index.html'))
 		.pipe(gulp.dest('./'))
     });
