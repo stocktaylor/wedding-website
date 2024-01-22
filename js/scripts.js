@@ -1,13 +1,19 @@
 document.addEventListener("DOMContentLoaded", (event => {
+
+    /***************** Smooth Scrolling ******************/
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
     
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
+            if(this.getAttribute('href') != "#"){
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
         });
     });
+
+    /***************** Initiate Fancybox ******************/
     Fancybox.bind("[data-fancybox]", {
         // Your custom options
     }); 
@@ -69,17 +75,6 @@ $(document).ready(function () {
         animation: "slide"
     });
 
-    /***************** Initiate Fancybox ******************/
-
-    $('.single_image').fancybox({
-        padding: 4
-    });
-
-    $('.fancybox').fancybox({
-        padding: 4,
-        width: 1000,
-        height: 800
-    });
 
     /***************** Tooltips ******************/
     $('[data-toggle="tooltip"]').tooltip();
@@ -132,7 +127,7 @@ $(document).ready(function () {
             }
         });
     });
-    /***************** Smooth Scrolling ******************/
+    
 
 
     /********************** Social Share buttons ***********************/
