@@ -1,51 +1,58 @@
-import gulp from 'gulp';
-import template from 'gulp-template';
-import data from 'gulp-data';
+// import gulp from 'gulp';
 
-export default () => (
-	gulp.src('index.html')
-		.pipe(data(() => ({name: 'Sindre'})))
-		.pipe(template(null, {
-			interpolate: /{{(.+?)}}/gs
-		}))
-		.pipe(gulp.dest('output/'))
-);
+// import data from 'gulp-data';
+
+// export default () => (
+
+    
+        
+// );
 
 // // import gulp from "gulp";
 
-// const {src, dest} = require('gulp');
-// const uglify = require('gulp-uglify');
-// const rename = require('gulp-rename');
-// var sass = require('gulp-sass')(require('sass'));
+import gulp from 'gulp';
+import uglify from 'gulp-uglify';
+import rename from 'gulp-rename';
+import template from 'gulp-template';
+import dartSass from 'sass';
+import gulpSass from 'gulp-sass';
+import fs from 'graceful-fs';
+const sass = gulpSass(dartSass);
 // const data = require('gulp-data');
 
-// function minJS() {
-//     return src('js/*.js')
-//         .pipe(uglify())
-//         .pipe(dest(`output/`));
-// }
+function minifyJS() {
+    gulp.src('./js/scripts.js')
+        .pipe(uglify())
+        .pipe(rename({basename: 'scripts.min'}))
+        .pipe(gulp.dest('./js'));
+}
 
-// function compSASS() {
-//     return src(`./sass/styles.scss`)
-//         .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
-//         .pipe(rename({basename: 'styles.min'}))
-//         .pipe(dest(`output/`));
-// }
+function csass() {
+    gulp.src('./sass/styles.scss')
+        .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+        .pipe(rename({basename: 'styles.min'}))
+        .pipe(gulp.dest('./css'));
+}
 
-// function tempHTML() {
-//     return src('index.html')
-// }
- 
-// function print() {
-//     console.log(`done`);
-// }
+function templateHTML() {
+    fs.readFile('./buildData/config.json', (err, data) => {
+        if(err) {
+            console.log(err);
+        }
+        gulp.src('index_template.html')
+		.pipe(template(JSON.parse(data)))
+        .pipe(rename('index.html'))
+		.pipe(gulp.dest('./output'))
+    });
 
-// function defaultTask(cb) {
-//     minJS();
-//     compSASS();
-//     print();
+}
 
-//     cb();
-//   }
+
+function defaultTask(cb) {
+    templateHTML();
+    csass();
+    minifyJS();
+    cb();
+}
   
-//   exports.default = defaultTask
+export default defaultTask;
