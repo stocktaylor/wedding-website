@@ -28,8 +28,18 @@ function templateHTML() {
         if(err) {
             console.log(err);
         }
+
+        let cfgJSON = JSON.parse(data);
+        if(cfgJSON.debug) {
+            console.log(`debug on`);
+            cfgJSON.template.index.script = 'scripts.js';
+        } else {
+            console.log(`debug off`);
+            cfgJSON.template.index.script = 'scripts.min.js';
+        }
+        
         gulp.src('index_template.html')
-		.pipe(template(JSON.parse(data).template.index))
+		.pipe(template(cfgJSON.template.index))
         .pipe(rename('index.html'))
 		.pipe(gulp.dest('./'))
     });
