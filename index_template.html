@@ -26,6 +26,8 @@
     <script>
         // load css files from CDN if local node_modules fail
         function loadCssFromCDN(css) {
+            console.log(`Local fetch of css failed, falling back to CDN`);
+            console.log(css);
             // create new link tag
             const link = document.createElement('link');
             if (css === 'animate.css') {
@@ -41,6 +43,7 @@
 
         // load js files from CDN if local node_modules fail
         function loadJsFromCDN(js) {
+            console.log('Local fetch of jquery.waypoints.js failed, falling back to CDN');
             if (js === 'waypoints.js') {
                 document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.js"><\/script>');
             } else if (js === 'jquery.js') {
@@ -60,8 +63,8 @@
     <link rel="stylesheet" href="css/flexslider.css">
     <link rel="stylesheet" href="css/styles.min.css">
     <link rel="stylesheet" href="css/queries.css">
-    <link rel="stylesheet" href="node_modules/animate.css/animate.min.css" onerror="loadCssFromCDN('animate.css')">
-    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css" onerror="loadCssFromCDN('font-awesome.css')">
+    <link rel="stylesheet" href="css/animate.min.css" onerror="loadCssFromCDN('animate.css')">
+    <link rel="stylesheet" href="css/font-awesome.min.css" onerror="loadCssFromCDN('font-awesome.css')">
     <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 </head>
 <body id="top">
@@ -397,7 +400,7 @@
     </div>
 </footer>
 <script src="js/vendor/jquery-1.11.2.min.js" onerror="loadJsFromCDN('jquery.js')"></script>
-<script src="node_modules/waypoints/lib/jquery.waypoints.min.js" onerror="loadJsFromCDN('waypoints.js')"></script>
+<script src="js/jquery.waypoints.min.js" onerror="loadJsFromCDN('waypoints.js')"></script>
 <script src="js/fancybox.umd.js"></script>
 <script src="js/vendor/bootstrap.min.js"></script>
 <script src="js/jquery.flexslider-min.js"></script>

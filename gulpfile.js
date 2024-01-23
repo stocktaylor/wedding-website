@@ -41,6 +41,10 @@ function templateHTML() {
 function copyCSSDeps() {
     gulp.src('./css/*.css')
         .pipe(gulp.dest('./output/css'));
+    gulp.src('./node_modules/animate.css/animate.min.css')
+        .pipe(gulp.dest('./output/css'))
+    gulp.src('./node_modules/font-awesome/css/font-awesome.min.css')
+        .pipe(gulp.dest('./output/css'))
 }
 
 function copyJSDeps() {
@@ -58,6 +62,8 @@ function copyJSDeps() {
         gulp.src('./js/scripts.js')
             .pipe(gulp.dest('./output/js'));
     }
+    gulp.src('./node_modules/waypoints/lib/jquery.waypoints.min.js')
+        .pipe(gulp.dest('./output/js'));
         
 }
 
