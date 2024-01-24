@@ -77,6 +77,69 @@ function copyFonts() {
         .pipe(gulp.dest('./output/fonts'))
 }
 
+function buildQAHTML() {
+    fs.readFile('./buildData/qa.json', (err, data) => {
+        config.template.index.centerqa = '';
+        config.template.index.leftqa = '';
+        config.template.index.rightqa = '';
+        if(err) {
+            console.error(`Error reading qa.json file`);
+            console.error(err);
+            console.log('Will skip generating QA section');
+
+            return;
+        }
+        let qa = JSON.parse(data);
+        console.log(qa);
+
+        let center = '';
+        let left = '';
+        let right = '';
+        for(let i = 0; i < qa.list.length; i++) {
+            center = center + `
+                <br>
+                <strong>${qa.list[i].q}</strong>
+                <br>
+                <br>
+
+            `;
+            if(Array.isArray(qa.list[i].a)) {
+                for(let j = 0 ; j < qa.list[i].a.length; j++) {
+                    center = center + `
+                        <p>${qa.list[i].a[j]}</p>
+                    `
+                }
+            } else {
+                center = center + `
+
+                 <p>${qa.list[i].a}</p>
+
+            `;
+            }
+        }
+        config.template.index.centerqa = center;
+        config.template.index.leftqa = left;
+        config.template.index.rightqa = right;
+        
+        // for(let i = 0; i < qa.list.length; i++) {
+        //     if((i%2) == 1) {
+        //         right = right + `
+        //          <strong>${qa.list[i].q}</strong>
+        //          <p>${qa.list[i].a}</p>
+        //         `;
+        //     } else {
+        //         left = left + `
+        //         <strong>${qa.list[i].q}</strong>
+        //         <p>${qa.list[i].a}</p>
+        //        `;
+        //     }
+        // }
+        // config.template.index.centerqa = center;
+        // config.template.index.leftqa = left;
+        // config.template.index.rightqa = right;
+    });
+}
+
 function defaultTask(cb) {
     fs.readFile('./buildData/config.json', (err, data) => {
         if(err) {
@@ -93,6 +156,7 @@ function defaultTask(cb) {
         }
         
         cleanupOutput();
+        buildQAHTML();
         templateHTML();
         csass();
         if(!config.debug)

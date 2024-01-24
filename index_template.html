@@ -124,7 +124,7 @@
             <!-- <div class="col-md-3 hidden-sm hidden-xs"><img src="img/IMG_2317.jpg" class="wp1"></div> -->
             <div class="col-md-12">
                 <p>
-                    This is a test of the auto deploy
+                    <%= elopement%>
                 </p>
             </div>
             <!-- <div class="col-md-3 hidden-sm hidden-xs"><img src="img/DSD_0214.jpg" class="wp2"></div> -->
@@ -141,6 +141,13 @@
         <div class="row">
             <div class="col-md-12 text-center">
                 <h3 class="header">The Reception</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <p>
+                    <%= reception%>
+                </p>
             </div>
         </div>
         <div class="row">
@@ -189,33 +196,16 @@
                 <div class="modal-body">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span>&times;</span>
                     </button>
-                    <h3 class="text-center section-padding">Ugh... dress codes?</h3>
-                    <h5>Reception Dress Code</span></h5>
-                    <p>
+                    <h3 class="text-center section-padding">Reception Dress Code</h3>
+                    <div class="section-padding">
                         <br>
-                        Information about the dress code goes here
-                    </p>
+                        <%= dresscode%>
+                    </div>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 
-</section>
-
-<section class="text-center" id="wishlist">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <h3 class="header">Gifts</h3>
-            </div>
-        </div>
-        <div class="row">
-            <!-- <div class="col-md-3 hidden-sm hidden-xs"><img src="img/IMG_2317.jpg" class="wp1"></div> -->
-            <div class="col-md-12">
-                <p><a href="https://www.amazon.com/wedding/share/celebratewiththestocks" target="_blank">Amazon Wishlist</a></p>
-            </div>
-        </div>
-    </div>
 </section>
 
 <section id="qa" class="section-padding">
@@ -224,11 +214,35 @@
             <div class="col-md-12 text-center">
                 <h3 class="header">Q&A</h3>
             </div>
+            <div class="col-md-12 text-center">
+                <%= centerqa%>
+            </div>
+            <div class="col-md-6 leftcol text-center">
+                <%= leftqa%>
+            </div>
+            <div class="col-md-6 rightcol text-center">
+                <%= rightqa%>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="text-center" id="wishlist">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h3 class="header">Registry</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <p><%= registry%></p>
+            </div>
+        </div>
+        <div class="row">
+            <!-- <div class="col-md-3 hidden-sm hidden-xs"><img src="img/IMG_2317.jpg" class="wp1"></div> -->
             <div class="col-md-12">
-                <strong>Can I ask you a question?</strong>
-                <p>
-                    This is where the answer goes
-                </p>
+                <p><a href="https://www.amazon.com/wedding/share/celebratewiththestocks" target="_blank">Amazon Wishlist</a></p>
             </div>
         </div>
     </div>
