@@ -156,7 +156,7 @@ function defaultTask(cb) {
         }
         
         cleanupOutput();
-        buildQAHTML();
+        //buildQAHTML();
         templateHTML();
         csass();
         if(!config.debug)
