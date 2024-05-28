@@ -173,7 +173,7 @@ $(document).ready(function () {
                 alert(http.responseText);
             }
         }
-        http.send(data);
+        http.send(JSON.stringify(data));
 
 
         // $.post(`https://api.${baseURL}`, data)
