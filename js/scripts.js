@@ -1,3 +1,7 @@
+const baseURL = 'mt-dev.wedding.net';
+
+
+
 document.addEventListener("DOMContentLoaded", (event => {
 
     /***************** Smooth Scrolling ******************/
@@ -146,10 +150,25 @@ $(document).ready(function () {
     /********************** RSVP **********************/
     $('#rsvp-form').on('submit', function (e) {
         alert('This feature is coming soon!');
-        // e.preventDefault();
-        // var data = $(this).serialize();
+        e.preventDefault();
+        let data = $(this).serialize();
 
-        // $('#alert-wrapper').html(alert_markup('info', '<strong>Just a sec!</strong> We are saving your details.'));
+        $('#alert-wrapper').html(alert_markup('info', '<strong>Just a sec!</strong> We are saving your details.'));
+
+        $.post(`https://api.${baseURL}`, data)
+            .done(function (data) {
+                console.log(data);
+                if (data.result === "error") {
+                    $('#alert-wrapper').html(alert_markup('danger', data.message));
+                } else {
+                    $('#alert-wrapper').html('');
+                    $('#rsvp-modal').modal('show');
+                }
+            })
+            .fail(function (data) {
+                console.log(data);
+                $('#alert-wrapper').html(alert_markup('danger', '<strong>Sorry!</strong> There is some issue with the server. '));
+            });
 
         // if (MD5($('#invite_code').val()) !== 'b0e53b10c1f55ede516b240036b88f40'
         //     && MD5($('#invite_code').val()) !== '2ac7f43695eb0479d5846bb38eec59cc') {
