@@ -154,23 +154,42 @@ $(document).ready(function () {
 
         $('#alert-wrapper').html(alert_markup('info', '<strong>Just a sec!</strong> We are saving your details.'));
 
-        console.log(`post to https://api.${baseURL}`);
+        const apiURL = `https://api.${baseURL}`;
+
+        console.log(`post to ${apiURL}`);
         console.log(`data to post:`);
         console.log(data);
-        $.post(`https://api.${baseURL}`, data)
-            .done(function (data) {
-                console.log(data);
-                if (data.result === "error") {
-                    $('#alert-wrapper').html(alert_markup('danger', data.message));
-                } else {
-                    $('#alert-wrapper').html('');
-                    $('#rsvp-modal').modal('show');
-                }
-            })
-            .fail(function (data) {
-                console.log(data);
-                $('#alert-wrapper').html(alert_markup('danger', '<strong>Sorry!</strong> There is some issue with the server. '));
-            });
+
+        var http = new XMLHttpRequest();
+        http.open('POST', apiURL, true);
+
+        //Send the proper header information along with the request
+        http.setRequestHeader('Content-type', 'application/json');
+        http.setRequestHeader('Origin', `https://${baseURL}`);
+        http.setRequestHeader('Origin', `https://api.${baseURL}`);
+
+        http.onreadystatechange = () => {//Call a function when the state changes.
+            if(http.readyState == 4 && http.status == 200) {
+                alert(http.responseText);
+            }
+        }
+        http.send(data);
+
+
+        // $.post(`https://api.${baseURL}`, data)
+        //     .done(function (data) {
+        //         console.log(data);
+        //         if (data.result === "error") {
+        //             $('#alert-wrapper').html(alert_markup('danger', data.message));
+        //         } else {
+        //             $('#alert-wrapper').html('');
+        //             $('#rsvp-modal').modal('show');
+        //         }
+        //     })
+        //     .fail(function (data) {
+        //         console.log(data);
+        //         $('#alert-wrapper').html(alert_markup('danger', '<strong>Sorry!</strong> There is some issue with the server. '));
+        //     });
 
         // if (MD5($('#invite_code').val()) !== 'b0e53b10c1f55ede516b240036b88f40'
         //     && MD5($('#invite_code').val()) !== '2ac7f43695eb0479d5846bb38eec59cc') {
