@@ -154,7 +154,7 @@ $(document).ready(function () {
 
         $('#alert-wrapper').html(alert_markup('info', '<strong>Just a sec!</strong> We are saving your details.'));
 
-        const apiURL = `https://api.${baseURL}`;
+        const apiURL = `https://api.${baseURL}/rsvp`;
 
         console.log(`post to ${apiURL}`);
         console.log(`data to post:`);
