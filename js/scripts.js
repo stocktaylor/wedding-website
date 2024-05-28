@@ -149,12 +149,14 @@ $(document).ready(function () {
 
     /********************** RSVP **********************/
     $('#rsvp-form').on('submit', function (e) {
-        alert('This feature is coming soon!');
         e.preventDefault();
         let data = $(this).serialize();
 
         $('#alert-wrapper').html(alert_markup('info', '<strong>Just a sec!</strong> We are saving your details.'));
 
+        console.log(`post to https://api.${baseURL}`);
+        console.log(`data to post:`);
+        console.log(data);
         $.post(`https://api.${baseURL}`, data)
             .done(function (data) {
                 console.log(data);
