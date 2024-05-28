@@ -151,6 +151,11 @@ $(document).ready(function () {
     $('#rsvp-form').on('submit', function (e) {
         e.preventDefault();
         let data = $(this).serializeArray();
+        let dataFixed = {};
+
+        for(let i = 0; i < data.length; i++) {
+            dataFixed[data[i].name] = data[i].value;
+        }
 
         $('#alert-wrapper').html(alert_markup('info', '<strong>Just a sec!</strong> We are saving your details.'));
 
@@ -173,7 +178,7 @@ $(document).ready(function () {
                 alert(http.responseText);
             }
         }
-        http.send(JSON.stringify(data));
+        http.send(JSON.stringify(dataFixed));
 
 
         // $.post(`https://api.${baseURL}`, data)
