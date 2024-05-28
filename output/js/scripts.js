@@ -1,4 +1,4 @@
-const baseURL = 'mt-dev.wedding.net';
+const baseURL = 'mt-dev-wedding.net';
 
 
 
