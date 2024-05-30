@@ -146,7 +146,18 @@ $(document).ready(function () {
         $('#btn-show-content').toggleClass('toggle-map-content');
     });
 
+    
 
+    $('#rsvp-givenname').bind('keyup', (e) => {
+        let me = $('#rsvp-givenname');
+        me.val(me.val().replace(/\s/g, ''));
+    });
+
+    $('#rsvp-surname').bind('keyup', (e) => {
+        let me = $('#rsvp-surname');
+        me.val(me.val().replace(/\s/g, ''));
+    });
+    
     /********************** RSVP **********************/
     $('#rsvp-form').on('submit', function (e) {
         e.preventDefault();
