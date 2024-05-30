@@ -174,8 +174,13 @@ $(document).ready(function () {
         http.setRequestHeader('Origin', `https://api.${baseURL}`);
 
         http.onreadystatechange = () => {//Call a function when the state changes.
-            if(http.readyState == 4 && http.status == 200) {
-                alert(http.responseText);
+            if(http.readyState == 4) {
+                if (data.result === "error") {
+                    $('#alert-wrapper').html(alert_markup('danger', data.message));
+                } else {
+                    $('#alert-wrapper').html('');
+                    $('#rsvp-modal').modal('show');
+                }
             }
         }
         http.send(JSON.stringify(dataFixed));
